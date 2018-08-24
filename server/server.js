@@ -15,6 +15,7 @@ class Server {
 
     async start() {
         await this.hapiServer.register(logger);
+        await this.hapiServer.register(require('./plugins/custom-plugin'));
         await this.hapiServer.start();
         console.log(`Server running at: ${this.hapiServer.info.uri}`);
     }
