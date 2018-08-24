@@ -2,7 +2,7 @@ const Hapi = require('hapi');
 const config = require('../configuration/config.json');
 const RouteManager = require('../server/routes');
 const logger = require('./logger');
-const path = require('path');
+const setView = require('./views');
 
 class Server {
 
@@ -17,14 +17,7 @@ class Server {
     async start() {
         await this.hapiServer.register(logger);
         await this.hapiServer.register(require('./plugins/custom-plugin'));
-        await this.hapiServer.register(require('vision'));
-        this.hapiServer.views({
-            engines: {
-                pug: require('pug')
-            },
-            relativeTo: path.resolve(__dirname, '..'),
-            path: 'templates'
-        });
+        await setView(this.hapiServer);
         await this.hapiServer.start();
         console.log(`Server running at: ${this.hapiServer.info.uri}`);
     }
