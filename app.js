@@ -1,10 +1,10 @@
-const Server = require('./server/server');
+const HapiServer = require('./server/server');
 
-const server = new Server();
+const hapiServer = new HapiServer();
 
 process.on('unhandledRejection', (err) => {
     console.log(err);
     process.exit(1);
 });
 
-server.start();
+hapiServer.start();

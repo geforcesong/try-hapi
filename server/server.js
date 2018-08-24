@@ -4,23 +4,23 @@ const RouteManager = require('../server/routes');
 const logger = require('./logger');
 const setView = require('./views');
 
-class Server {
+class HapiServer {
 
     constructor() {
-        this.hapiServer = Hapi.server({
+        this.server = Hapi.server({
             port: config.port || 3000,
             host: config.host || 'localhost'
         });
-        (new RouteManager(this.hapiServer)).register(this.hapiServer);
+        (new RouteManager(this.server)).register(this.server);
     }
 
     async start() {
-        await this.hapiServer.register(logger);
-        await this.hapiServer.register(require('./plugins/custom-plugin'));
-        await setView(this.hapiServer);
-        await this.hapiServer.start();
-        console.log(`Server running at: ${this.hapiServer.info.uri}`);
+        await this.server.register(logger);
+        await this.server.register(require('./plugins/custom-plugin'));
+        await setView(this.server);
+        await this.server.start();
+        console.log(`Server running at: ${this.server.info.uri}`);
     }
 }
 
-module.exports = Server;
+module.exports = HapiServer;
