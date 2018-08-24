@@ -1,6 +1,7 @@
 const Hapi = require('hapi');
 const config = require('../configuration/config.json');
 const RouteManager = require('../server/routes');
+const logger = require('./logger');
 
 class Server {
 
@@ -13,6 +14,7 @@ class Server {
     }
 
     async start() {
+        await this.hapiServer.register(logger);
         await this.hapiServer.start();
         console.log(`Server running at: ${this.hapiServer.info.uri}`);
     }
