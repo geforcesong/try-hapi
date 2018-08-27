@@ -1,4 +1,5 @@
 const GeoController = require('../controllers/geoController');
+const ApiController = require('../controllers/apiController');
 
 class RouteManager{
     constructor(server){
@@ -8,6 +9,7 @@ class RouteManager{
     register(){
         this.registerOne('GET', '/', GeoController);
         this.registerOne('GET', '/about', GeoController, 'loadAbout');
+        this.registerOne('POST', '/api/rechapcha/validate', ApiController);
     }
 
     registerOne(method, path, Controller, view = 'loadView') {
