@@ -12,8 +12,16 @@ module.exports = {
                 module: 'good-squeeze',
                 name: 'SafeJson'
             }, {
-                module: 'good-file',
-                args: ['./logs/access.log']
+                module: 'rotating-file-stream',
+                args: [
+                    'nodejs-web.log',
+                    {
+                        path: './logs',
+                        size: '10K',
+                        interval: '1d',
+                        compress: true
+                    }
+                ]
             }]
         }
     }
