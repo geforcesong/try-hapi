@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run stop && pm2 start app.js",
-    "stop": "pm2 stop all"
+    "start": "pm2 start app.js",
+    "stop": "pm2 stop all",
+    "restart": "pm2 restart app.js"
   },
   "repository": {
     "type": "git",
