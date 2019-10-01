@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 restart app.js",
+    "start": "npm run stop && pm2 start app.js",
     "stop": "pm2 stop all"
   },
   "repository": {
