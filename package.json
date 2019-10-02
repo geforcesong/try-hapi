@@ -6,6 +6,7 @@
   "scripts": {
     "start": "pm2 start app.js",
     "stop": "pm2 stop all",
+    "list": "pm2 list",
     "restart": "pm2 restart app.js"
   },
   "repository": {
